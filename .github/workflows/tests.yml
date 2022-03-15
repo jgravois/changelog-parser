@@ -26,7 +26,7 @@ jobs:
       - uses: msimerson/node-lts-versions@v1.1.1
 
         with:
-          node-version: ${{ lts.outputs.lts }}
-      - run: echo ${{needs.lts.outputs.lts}}
+          node-version: ${{ needs.lts.outputs.lts }}
+      - run: echo ${{ needs.lts.outputs.lts }}
       - run: npm i
       - run: npm test
