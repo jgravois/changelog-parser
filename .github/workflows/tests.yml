@@ -4,7 +4,7 @@ name: tests
 on: [push, pull_request]
 
 jobs:
-  lts:
+  findlts:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: msimerson/node-lts-versions@v1.1.1
   test:
+    needs: findlts
     runs-on: ${{ matrix.os }}
-    needs: lts
 
     strategy:
       matrix:
@@ -26,4 +26,4 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ needs.lts.outputs.lts }}
-      - run: echo ${{ needs.lts.outputs.lts }}
+      - run: echo ${{ needs.findlts.output.lts }}
