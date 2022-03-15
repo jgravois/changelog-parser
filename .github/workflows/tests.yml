@@ -25,6 +25,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ needs.lts.outputs.lts }}
-      - run: echo ${{needs.lts.outputs.lts}}
       - run: npm i
       - run: npm test
