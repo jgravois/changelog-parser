@@ -12,9 +12,9 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: msimerson/node-lts-versions@v1.1.1
-
   test:
     runs-on: ${{ matrix.os }}
+    needs: lts
 
     strategy:
       matrix:
@@ -27,5 +27,6 @@ jobs:
 
         with:
           node-version: ${{ lts.outputs.lts }}
+      - run: echo ${{needs.lts.outputs.lts}}
       - run: npm i
       - run: npm test
