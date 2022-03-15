@@ -19,6 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        node: ${{ needs.lts.outputs.lts }}
 
     steps:
       - uses: actions/checkout@v3
