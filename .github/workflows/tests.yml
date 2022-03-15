@@ -19,7 +19,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        node: ${{ lts.outputs.lts }}
 
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +26,6 @@ jobs:
       - uses: msimerson/node-lts-versions@v1.1.1
 
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ lts.outputs.lts }}
       - run: npm i
       - run: npm test
