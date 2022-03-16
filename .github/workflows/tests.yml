@@ -13,9 +13,9 @@ jobs:
     outputs:
       lts: ${{ steps.step1.outputs.lts }}
     steps:
-      - id: step1
+      - id: 'step1'
         uses: msimerson/node-lts-versions@v1.1.1
-        run: 'echo hello!'
+
 
   test:
     needs: findlts
@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [lts/*]
+        node: ${{ jobs.findlts.outputs.lts }}
 
     steps:
       - uses: actions/checkout@v3
