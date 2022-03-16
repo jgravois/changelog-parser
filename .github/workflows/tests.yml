@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: ${{ jobs.findlts.outputs.lts }}
+        node: ${{ needs.findlts.outputs.lts }}
 
     steps:
       - uses: actions/checkout@v3
