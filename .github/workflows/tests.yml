@@ -15,20 +15,5 @@ jobs:
     steps:
       - id: 'step1'
         uses: msimerson/node-lts-versions@v1.1.1
-
-
-  test:
-    needs: findlts
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: ${{ needs.findlts.outputs.lts }}
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ needs.lts.outputs.lts }}
-      - run: echo ${{ needs.findlts.output.lts }}
+      - id: 'step2'
+        run: echo ${{ step1.outputs.lts }}
