@@ -10,8 +10,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+    outputs:
+      lts: ${{ steps.step1.outputs.lts }}
     steps:
+      - id: step1
       - uses: msimerson/node-lts-versions@v1.1.1
+
   test:
     needs: findlts
     runs-on: ${{ matrix.os }}
