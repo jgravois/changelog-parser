@@ -14,8 +14,8 @@ jobs:
       lts: ${{ steps.step1.outputs.lts }}
     steps:
       - uses: msimerson/node-lts-versions@v1.1.1
+      - run: 'echo hello!'
       - id: step1
-
 
   test:
     needs: findlts
