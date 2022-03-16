@@ -16,4 +16,4 @@ jobs:
       - id: 'step1'
         uses: msimerson/node-lts-versions@v1.1.1
       - id: 'step2'
-        run: echo ${{ step1.outputs.lts }}
+        run: echo ${{ steps.step1.outputs.lts }}
